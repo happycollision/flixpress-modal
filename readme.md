@@ -151,6 +151,8 @@ After a modal box is invoked, simply call `flixpressModalSizeChange()` and pass 
 
 ## Changelog
 
+1.0.1: Refined documentation. Changed default for toolbar image.
+
 1.0.0: Spun off from [original location](http://github.com/happycollision/flixpress-static-prjects)
 
 ## License
