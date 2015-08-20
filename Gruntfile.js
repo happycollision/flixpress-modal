@@ -16,7 +16,7 @@ module.exports = function (grunt) {
       ' Licensed MIT */\n',
     // Task configuration.
     clean: {
-      files: ['dist']
+      files: ['dist', '.tmp']
     },
     concat: {
       options: {
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
       },
       dist: {
         src: ['src/<%= pkg.name %>.js'],
-        dest: 'dist/jquery.<%= pkg.name %>.js'
+        dest: 'dist/<%= pkg.name %>.js'
       }
     },
     uglify: {
@@ -34,7 +34,7 @@ module.exports = function (grunt) {
       },
       dist: {
         src: '<%= concat.dist.dest %>',
-        dest: 'dist/jquery.<%= pkg.name %>.min.js'
+        dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
     qunit: {
@@ -43,6 +43,53 @@ module.exports = function (grunt) {
           urls: ['http://localhost:9000/test/<%= pkg.name %>.html']
         }
       }
+    },
+    sass: {
+      options: {
+        sourcemap: 'none',
+        compass: true,
+        /*require: ['susy','breakpoint'],
+        bundleExec: true*/
+      },
+      dev: {
+        files: [{
+          expand: true,
+          cwd: 'src',
+          src: ['**.{scss,sass}'],
+          dest: '.tmp',
+          ext: '.css'
+        }]
+      }
+    },
+    postcss: {
+      dist: {
+        options: {
+          processors: [
+            require('autoprefixer-core')({browsers: '> 0.05%'})
+          ],
+        },
+        files: [{
+          expand: true,
+          flatten: true,
+          src: ['.tmp/*.css'],
+          dest: 'dist/'
+        }]
+      },
+      distmin: {
+        options: {
+          processors: [
+            require('autoprefixer-core')({browsers: '> 0.05%'}),
+            require('csswring')
+          ],
+        },
+        files: [{
+          expand: true,
+          flatten: true,
+          src: '.tmp/*.css',
+          dest: 'dist/',
+          ext: '.min.css'
+        }]
+      },
     },
     jshint: {
       options: {
@@ -74,29 +121,48 @@ module.exports = function (grunt) {
       },
       src: {
         files: '<%= jshint.src.src %>',
-        tasks: ['jshint:src', 'qunit']
+        tasks: ['jshint', 'concat', 'uglify']
       },
       test: {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'qunit']
+      },
+      sass: {
+        files: 'src/*.sass',
+        tasks: ['css']
+      },
+      livereload: {
+        options: {
+          livereload: '<%= connect.dev.options.livereload %>'
+        },
+        files: ['demo/**/*', 'dist/**/*']
       }
     },
     connect: {
-      server: {
+      options: {
+        hostname: '*',
+        port: 9000
+      },
+      server: {},
+      dev: {
         options: {
-          hostname: '*',
-          port: 9000
+          livereload: 35728,
+          open: {
+            target: 'http://localhost:9000/',
+            appName: 'google chrome'
+          }
         }
       }
     }
   });
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'connect', 'qunit', 'clean', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', /*'connect:server', 'qunit',*/ 'clean', 'concat', 'uglify', 'css']);
   grunt.registerTask('server', function () {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve']);
   });
-  grunt.registerTask('serve', ['connect', 'watch']);
+  grunt.registerTask('css', ['sass', 'postcss']);
+  grunt.registerTask('serve', ['default', 'connect:dev', 'watch']);
   grunt.registerTask('test', ['jshint', 'connect', 'qunit']);
 };

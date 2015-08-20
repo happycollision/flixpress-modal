@@ -4,33 +4,23 @@
 
 
     <meta charset="utf-8">
-    <title>Flixpress Modal Box Test Suite</title>
-    <!-- Load local jQuery. -->
-    <script src="../bower_components/jquery/jquery.js"></script>
-    <!-- Load local QUnit. -->
+    <title>Flixpress Modal Demo</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../dist/flixpress-modal.min.css">
-    <!-- Load local lib and tests. -->
-    <script src="../dist/flixpress-modal.min.js"></script>
   </head>
   <body>
 
   <div class="notes">
     <h3>Notes:</h3>
     <ul>
-      <li>This page won't work just yet. See the [dropbox demo](http://dl.dropboxusercontent.com/u/20859562/flixpress/pricing-grid/pricing.html) for now</li>
       <li>
-        Mobile Safari has issues with <code>position:fixed</code> that need resolving for the modal.
-      </li>
-      <li>
-        You may need to clear your cache to get the latest styles.
+        Mobile Safari has issues with <code>position:fixed</code> that need resolving.
       </li>
     </ul>
   </div>
 
  
   <a href="#" class="modal full-modal button" data-modal-content-name="lorem">Push me for modal</a> Content from hidden div.
-  <br>
-  <a href="#" class="modal full-modal button" data-modal-content-name="alternate">Push me for modal</a> Content from different hidden div.
   <br>
   <a href="#" class="modal full-modal button" data-modal-content-address="another-page.html">Push me for modal</a> Content from local URL.
   <br>
@@ -71,13 +61,6 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in enim ut ipsum volutpat tincidunt vitae sit amet tellus. Pellentesque congue dapibus sapien quis molestie. Suspendisse eget elit in odio sodales semper in tristique lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed porta malesuada consectetur. Curabitur non mi vitae lorem maximus consectetur id sit amet ex. Donec libero tortor, imperdiet quis ipsum et, sodales rutrum lacus. Nullam id turpis sed est porttitor laoreet id eget massa. Aliquam molestie nec arcu ac congue. Nunc eget venenatis tellus. Aliquam in elit egestas, finibus tellus non, sollicitudin ante.</p>
 </div>
 
-<div class="modal-content" data-modal-content-for="alternate">
-  <h3>This content is different</h3>
-</div>
-<div class="modal-content" data-modal-content-for="alternate">
-  <h3>This content is different 2</h3>
-</div>
-
 <div class="modal-content" data-modal-content-for="small-content">
   <h3>Content for the small modal</h3>
   <div>If you want to change the size of this modal, pass in an object to <code>window.flixpressModalSizeChange()</code> with the <code>heightPercent</code> and/or the <code>widthPercent</code> as numbers. For example, the code below will run when you push the button below:</div>
@@ -92,18 +75,16 @@
 
 </div>
 
-    <script src="/jquery/jquery.min.js"></script>
+    <script src="../bower_components/jquery/jquery.js"></script>
+    <script src="../bower_components/jquery.ui/ui/core.js"></script>
+    <script src="../bower_components/jquery.ui/ui/effect.js"></script>
+    <script src="../bower_components/jquery.ui/ui/effect-slide.js"></script>
 
+    <!-- Fallback for non-dev use -->
     <script>window.jQuery || document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"><\/script>')</script>
-
-    <script src="/jquery-ui/ui/core.js"></script>
-    <script src="/jquery-ui/ui/effect.js"></script>
-    <script src="/jquery-ui/ui/effect-slide.js"></script>
-
     <script>window.jQuery.ui || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"><\/script>')</script>
 
-    <script src="js/pricing-grid.js"></script>
-    <script src="js/flixpress-modal.js"></script>
+    <script src="../dist/flixpress-modal.min.js"></script>
     <script type="text/javascript">
       $.flixpressModal();
     </script>
