@@ -20,15 +20,17 @@
   </div>
 
  
-  <a href="#" class="modal full-modal button" data-modal-content-name="lorem">Push me for modal</a> Content from hidden div.
+  <a href="#" class="modal full-modal button" data-modal-content-name="lorem">Push me</a> Content from hidden div.
   <br>
-  <a href="#" class="modal full-modal button" data-modal-content-address="another-page.html">Push me for modal</a> Content from local URL.
+  <a href="#" class="modal full-modal button" data-modal-content-address="another-page.html">Push me</a> Content from local URL.
   <br>
-  <a href="#" class="modal full-modal button" data-modal-content="data from button's attribute">Push me for modal</a> Content data attribute.
+  <a href="#" class="modal full-modal button" data-modal-content="data from button's attribute">Push me</a> Content data attribute.
   <br>
-  <a href="#" class="modal full-modal button">Push me for modal</a> Content missing.
+  <a href="#" class="full-modal button set-me-jq" data-modal-content="data from button's attribute">Push me</a> Content data set via jquery.
   <br>
-  <a href="#" class="modal button" data-modal-content-name="small-content">Push me for small modal</a>
+  <a href="#" class="modal full-modal button">Push me</a> Content missing.
+  <br>
+  <a href="#" class="modal button" data-modal-content-name="small-content">Push me</a> Partial modal.
 
 
 
@@ -86,7 +88,8 @@
 
     <script src="../dist/flixpress-modal.min.js"></script>
     <script type="text/javascript">
-      $.flixpressModal();
+      $.flixpressModal({toolbarImageSrc:'images/flix-gear.png'});
+      $('.set-me-jq').data('modal-content','This was set with jQuery.').flixpressModal();
     </script>
   </body>
 </html>

@@ -5,7 +5,7 @@
   // Flixpress Modal Options
   var fmo = {
     classNamePrefix: 'flixpress-modal-',
-    toolbarImageSrc: 'images/flix-gear.png',
+    toolbarImageSrc: '',
     preferredSize: 'partial',
     alternateSizeClassName: 'full-modal',
     partialModalProperties: false, // use definititions below
@@ -23,9 +23,14 @@
     $modal = $div.clone().addClass(fmo.classNamePrefix + 'main');
     $container = $div.clone().addClass(fmo.classNamePrefix + 'container');
     $modalContent = $div.clone().addClass(fmo.classNamePrefix + 'content');
-    img = new Image();
-    img.src = fmo.toolbarImageSrc;
-    $toolbar = $div.clone().addClass(fmo.classNamePrefix + 'toolbar').prepend(img).hide();
+    $toolbar = $div.clone().addClass(fmo.classNamePrefix + 'toolbar').hide();
+
+    if (fmo.toolbarImageSrc !== ''){      
+      img = new Image();
+      img.src = fmo.toolbarImageSrc;
+      $toolbar.prepend(img);
+    }
+
     $closeButton = $div.clone().addClass(fmo.classNamePrefix + 'close-button').html('Close');
     $shade = $div.clone().addClass(fmo.classNamePrefix + 'shade');
 
