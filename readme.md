@@ -7,10 +7,12 @@
 
 (This is a jQuery plugin. It also requires jQuery UI's Slide effect.)
 
-Download the [production version][min] or the [development version][max].
+Download the [production version][min] or the [development version][max]. You'll also need the [productioncss][css] or the [development css][devcss]. All of these can be found in the `/dist` folder.
 
 [min]: https://raw.githubusercontent.com/happycollision/jquery-flixpress-modal/master/dist/flixpress-modal.min.js
 [max]: https://raw.githubusercontent.com/happycollision/jquery-flixpress-modal/master/dist/flixpress-modal.js
+[css]: https://raw.githubusercontent.com/happycollision/jquery-flixpress-modal/master/dist/flixpress-modal.min.css
+[devcss]: https://raw.githubusercontent.com/happycollision/jquery-flixpress-modal/master/dist/flixpress-modal.css
 
 In your web page `<head>`, do something like this:
 
@@ -22,12 +24,18 @@ In your web page footer, do something like this:
 
 ```html
 
+<!-- jQuery -->
 <script src="jquery.js"></script>
+
+<!-- jQuery UI Slide Effect -->
 <script src="jquery-ui/ui/core.js"></script>
 <script src="jquery-ui/ui/effect.js"></script>
 <script src="jquery-ui/ui/effect-slide.js"></script>
 
+<!-- Flixpress Modal plugin -->
 <script src="flixpress-modal.js"></script>
+
+<!-- Call the plugin -->
 <script>
   jQuery(function ($) {
     $.flixpressModal();
