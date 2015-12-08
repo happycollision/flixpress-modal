@@ -45,7 +45,7 @@ In your web page footer, do something like this:
 
 ## Usage and Options
 
-Calling a modal box from an element click can be accomplished two ways by default. You can simply give an element a class name of `modal` or you can target an element with jQuery and call the plugin's collection method on it. So both of the follwoing examples will have the same effect:
+Calling a modal box from an element click can be accomplished two ways by default. You can simply give an element a class name of `modal` or you can target an element with jQuery and call the plugin's collection method on it. So both of the following examples will have the same effect:
 
 ```html
 <div class="modal some-button-thing">Push me</div>
@@ -58,7 +58,7 @@ Calling a modal box from an element click can be accomplished two ways by defaul
 </script>
 ```
 
-In each case, however, no content will be found and the modal box will say as much. We must also dsignate content to appear in the box for each element. This can be done in several ways.
+In each case, however, no content will be found and the modal box will say as much. We must also designate content to appear in the box for each element. This can be done in several ways.
 
 __Directly on the element__: Sometimes, you will want to populate your content with javascript or you will have comparatively simple content to display. In this case, you can use the `data` attribute and store a value for `modal-content`. Here is one example in plain HTML and one using jQuery:
 
@@ -136,7 +136,7 @@ Optionally passes an object in to alter the default sizing of the partial modal.
 ```javascript
 var options = {
   percentHeight: 80,
-  percentwidth: 80
+  percentWidth: 80
 };
 
 $.flixpressModal({partialModalProperties: options});
@@ -149,7 +149,7 @@ The code above mimics the default behavior of the initial size of any partial mo
 Type: `string`  
 Default: `'modal'`
 
-Defines the class name that Flixpress Modal will use to autmatically assign modal functionality. All examples in this document assume the default.
+Defines the class name that Flixpress Modal will use to automatically assign modal functionality. All examples in this document assume the default.
 
 ### Resizing
 
